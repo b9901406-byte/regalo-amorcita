@@ -1,0 +1,910 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para mi Amorcita ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    overflow:hidden;
+    font-family:Georgia, serif;
+    background:
+        radial-gradient(circle at top,#fff5fa,#ffd0e2,#d98bab);
+    color:#7a2148;
+}
+
+/* PANTALLA INICIAL */
+
+.inicio{
+    position:fixed;
+    inset:0;
+    z-index:20;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    background:
+        radial-gradient(circle,#fff7fb,#ffc6dc);
+
+    transition:1.5s;
+}
+
+.inicio h1{
+    font-size:40px;
+    color:#b51f5b;
+    text-shadow:0 3px 15px white;
+    text-align:center;
+}
+
+.inicio p{
+    font-size:20px;
+    margin:15px 25px 30px;
+    text-align:center;
+}
+
+.boton{
+    padding:16px 35px;
+    border:none;
+    border-radius:40px;
+
+    background:linear-gradient(45deg,#c9185b,#ff5795);
+
+    color:white;
+    font-size:18px;
+
+    cursor:pointer;
+
+    box-shadow:0 8px 25px #8c164455;
+
+    transition:.3s;
+}
+
+.boton:hover{
+    transform:scale(1.08);
+}
+
+
+/* CONTENIDO */
+
+.contenido{
+    display:none;
+    min-height:100vh;
+
+    text-align:center;
+
+    padding-top:20px;
+
+    animation:aparecer 2s;
+}
+
+.titulo{
+    color:#a81750;
+    font-size:32px;
+
+    text-shadow:0 2px 10px white;
+}
+
+.subtitulo{
+    margin-top:6px;
+    font-size:18px;
+}
+
+
+/* RAMO */
+
+.ramo{
+    position:relative;
+
+    width:380px;
+    height:430px;
+
+    margin:auto;
+}
+
+
+/* TALLOS */
+
+.tallo{
+    position:absolute;
+
+    bottom:90px;
+    left:50%;
+
+    width:8px;
+    height:230px;
+
+    background:linear-gradient(
+        to right,
+        #27652e,
+        #63aa60
+    );
+
+    border-radius:10px;
+
+    transform-origin:bottom;
+}
+
+.t1{transform:rotate(-35deg);}
+.t2{transform:rotate(-20deg);}
+.t3{transform:rotate(-8deg);}
+.t4{transform:rotate(8deg);}
+.t5{transform:rotate(20deg);}
+.t6{transform:rotate(35deg);}
+
+
+/* HOJAS */
+
+.hoja{
+    position:absolute;
+
+    width:48px;
+    height:24px;
+
+    background:linear-gradient(
+        45deg,
+        #23642c,
+        #65ad61
+    );
+
+    border-radius:100% 0 100% 0;
+}
+
+.h1{
+    left:75px;
+    top:255px;
+    transform:rotate(-35deg);
+}
+
+.h2{
+    right:75px;
+    top:275px;
+    transform:rotate(150deg);
+}
+
+.h3{
+    left:115px;
+    top:305px;
+    transform:rotate(-15deg);
+}
+
+.h4{
+    right:110px;
+    top:315px;
+    transform:rotate(170deg);
+}
+
+
+/* FLORES */
+
+.flor{
+    position:absolute;
+
+    width:105px;
+    height:105px;
+
+    animation:florAparece 2s ease-out;
+}
+
+.flor1{left:35px;top:45px;}
+.flor2{left:135px;top:10px;animation-delay:.3s;}
+.flor3{right:30px;top:50px;animation-delay:.6s;}
+.flor4{left:85px;top:105px;animation-delay:.9s;}
+.flor5{right:90px;top:115px;animation-delay:1.2s;}
+.flor6{left:140px;top:75px;animation-delay:1.5s;}
+
+
+/* PÉTALOS */
+
+.petalo{
+    position:absolute;
+
+    width:48px;
+    height:70px;
+
+    background:linear-gradient(
+        145deg,
+        #fff2f8,
+        #ee8bb5 60%,
+        #b92560
+    );
+
+    border-radius:50% 50% 45% 45%;
+
+    left:50%;
+    top:50%;
+
+    transform-origin:bottom center;
+}
+
+.petalo:nth-child(1){
+    transform:translate(-50%,-100%) rotate(0deg);
+}
+
+.petalo:nth-child(2){
+    transform:translate(-50%,-100%) rotate(60deg);
+}
+
+.petalo:nth-child(3){
+    transform:translate(-50%,-100%) rotate(120deg);
+}
+
+.petalo:nth-child(4){
+    transform:translate(-50%,-100%) rotate(180deg);
+}
+
+.petalo:nth-child(5){
+    transform:translate(-50%,-100%) rotate(240deg);
+}
+
+.petalo:nth-child(6){
+    transform:translate(-50%,-100%) rotate(300deg);
+}
+
+
+/* CENTRO */
+
+.centro{
+    position:absolute;
+
+    width:35px;
+    height:35px;
+
+    background:radial-gradient(
+        circle,
+        #fff3a0,
+        #e39a20
+    );
+
+    border-radius:50%;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    box-shadow:
+        0 0 10px #ffd86b,
+        0 0 25px white;
+}
+
+
+/* ENVOLTORIO */
+
+.envoltorio{
+    position:absolute;
+
+    bottom:0;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:260px;
+    height:170px;
+
+    background:linear-gradient(
+        120deg,
+        #f5aac6,
+        #fff0f6,
+        #e284aa
+    );
+
+    clip-path:polygon(
+        5% 0,
+        95% 0,
+        75% 100%,
+        25% 100%
+    );
+
+    filter:drop-shadow(
+        0 8px 10px #7a214855
+    );
+}
+
+
+/* CINTA */
+
+.cinta{
+    position:absolute;
+
+    bottom:75px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:70px;
+    height:30px;
+
+    background:#c91f61;
+
+    border-radius:10px;
+
+    z-index:5;
+}
+
+
+/* BOTÓN CARTA */
+
+.botonCarta{
+    margin-top:-15px;
+}
+
+
+/* CARTA */
+
+.carta{
+    position:fixed;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(0);
+
+    width:min(90%,430px);
+
+    max-height:85vh;
+    overflow:auto;
+
+    padding:35px 25px;
+
+    background:#fffafc;
+
+    border-radius:22px;
+
+    box-shadow:
+        0 20px 60px #681b3c66;
+
+    z-index:30;
+
+    transition:.8s;
+}
+
+.carta.abierta{
+    transform:
+        translate(-50%,-50%)
+        scale(1);
+}
+
+.carta h2{
+    color:#c2185b;
+    margin-bottom:20px;
+}
+
+.carta p{
+    line-height:1.7;
+    margin-bottom:14px;
+}
+
+.cerrar{
+    padding:10px 25px;
+
+    border:none;
+    border-radius:20px;
+
+    background:#d92b69;
+    color:white;
+
+    cursor:pointer;
+}
+
+
+/* CORAZONES */
+
+.corazon{
+    position:fixed;
+
+    bottom:-30px;
+
+    font-size:25px;
+
+    animation:subir 7s linear infinite;
+
+    opacity:.7;
+}
+
+
+/* PÉTALOS */
+
+.petaloCaido{
+    position:fixed;
+
+    top:-30px;
+
+    font-size:22px;
+
+    animation:caer linear forwards;
+
+    z-index:2;
+}
+
+
+/* ANIMACIONES */
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:scale(.8);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+@keyframes florAparece{
+
+    from{
+        opacity:0;
+        transform:scale(0) rotate(-30deg);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) rotate(0);
+    }
+
+}
+
+@keyframes caer{
+
+    to{
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity:0;
+    }
+
+}
+
+@keyframes subir{
+
+    from{
+        transform:translateY(0);
+        opacity:0;
+    }
+
+    20%{
+        opacity:.8;
+    }
+
+    to{
+        transform:translateY(-110vh);
+        opacity:0;
+    }
+
+}
+
+
+/* CELULAR */
+
+@media(max-width:500px){
+
+    .inicio h1{
+        font-size:31px;
+        padding:0 20px;
+    }
+
+    .ramo{
+        transform:scale(.78);
+
+        margin-top:-20px;
+        margin-bottom:-70px;
+    }
+
+    .titulo{
+        font-size:27px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .contenido {
+        width: 100%;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .ramo {
+        transform: scale(0.75);
+        transform-origin: center;
+    }
+
+    .carta {
+        width: 90%;
+        margin: auto;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+}
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     MÚSICA
+========================= -->
+
+<audio id="musica" loop>
+    <source src="por-amarte-asi.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- =========================
+     INICIO
+========================= -->
+
+<div class="inicio" id="inicio">
+
+    <h1>
+        💌 Para mi Amorcita 💌
+    </h1>
+
+    <p>
+        Mi Amorcita, tengo un pequeño regalo para ti... ❤️
+    </p>
+
+    <button class="boton" onclick="abrir()">
+        🌸 Abrir mi regalo 🌸
+    </button>
+
+</div>
+
+
+<!-- =========================
+     CONTENIDO
+========================= -->
+
+<div class="contenido" id="contenido">
+
+    <h1 class="titulo">
+        🌹 Para mi Amorcita 🌹
+    </h1>
+
+    <p class="subtitulo">
+        Feliz 21 de septiembre, mi vida ❤️
+    </p>
+
+
+    <!-- RAMO -->
+
+    <div class="ramo">
+
+        <!-- Tallos -->
+        <div class="tallo t1"></div>
+        <div class="tallo t2"></div>
+        <div class="tallo t3"></div>
+        <div class="tallo t4"></div>
+        <div class="tallo t5"></div>
+        <div class="tallo t6"></div>
+
+
+        <!-- Hojas -->
+        <div class="hoja h1"></div>
+        <div class="hoja h2"></div>
+        <div class="hoja h3"></div>
+        <div class="hoja h4"></div>
+
+
+        <!-- Flor 1 -->
+        <div class="flor flor1">
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="centro"></div>
+        </div>
+
+
+        <!-- Flor 2 -->
+        <div class="flor flor2">
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="centro"></div>
+        </div>
+
+
+        <!-- Flor 3 -->
+        <div class="flor flor3">
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="centro"></div>
+        </div>
+
+
+        <!-- Flor 4 -->
+        <div class="flor flor4">
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="centro"></div>
+        </div>
+
+
+        <!-- Flor 5 -->
+        <div class="flor flor5">
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="centro"></div>
+        </div>
+
+
+        <!-- Flor 6 -->
+        <div class="flor flor6">
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="centro"></div>
+        </div>
+
+
+        <div class="envoltorio"></div>
+
+        <div class="cinta"></div>
+
+    </div>
+
+
+    <button class="boton botonCarta" onclick="carta()">
+        💌 Esta carta para ti 
+    </button>
+
+</div>
+
+
+<!-- =========================
+     CARTA
+========================= -->
+
+<div class="carta" id="carta">
+
+    <h2>
+        Para mi Amorcita ❤️
+    </h2>
+
+    <p>
+        Mi amor...
+    </p>
+
+    <p>
+        Hoy quise hacerte algo diferente.
+        Estas flores son eternas porque quería
+        regalarte algo que no se marchite.
+    </p>
+
+    <p>
+        Aunque ninguna flor puede compararse
+        con lo bonita y especial que eres para mí,
+        hice este pequeño ramo pensando
+        solamente en ti. 🌹
+    </p>
+
+    <p>
+        Gracias por estar en mi vida,
+        por cada momento que hemos compartido
+        y por todas las sonrisas que me has regalado.
+    </p>
+
+    <p>
+        Espero que cuando veas este pequeño detalle
+        recuerdes que hay alguien que te quiere
+        muchísimo.
+    </p>
+
+    <p>
+        ❤️ <strong>Te amo, mi Amorcita.</strong> ❤️
+    </p>
+
+    <p>
+        Feliz 21 de septiembre mi vida. 🌷
+    </p>
+
+    <button class="cerrar" onclick="cerrarCarta()">
+        Cerrar ❤️
+    </button>
+
+</div>
+
+
+<script>
+
+
+/* ABRIR REGALO */
+
+function abrir(){
+
+    let musica =
+        document.getElementById("musica");
+
+    /*
+       El navegador permite iniciar
+       la música porque esto ocurre
+       después de tocar el botón.
+    */
+
+    musica.play().catch(function(){
+        console.log("No se pudo reproducir automáticamente.");
+    });
+
+
+    document.getElementById("inicio")
+        .style.opacity="0";
+
+
+    setTimeout(function(){
+
+        document.getElementById("inicio")
+            .style.display="none";
+
+        document.getElementById("contenido")
+            .style.display="block";
+
+        crearPetalos();
+
+    },1200);
+
+}
+
+
+/* ABRIR CARTA */
+
+function carta(){
+
+    document.getElementById("carta")
+        .classList.add("abierta");
+
+}
+
+
+/* CERRAR CARTA */
+
+function cerrarCarta(){
+
+    document.getElementById("carta")
+        .classList.remove("abierta");
+
+}
+
+
+/* PÉTALOS CAYENDO */
+
+function crearPetalos(){
+
+    setInterval(function(){
+
+        let petalo =
+            document.createElement("div");
+
+        petalo.className="petaloCaido";
+
+        petalo.innerHTML="🌸";
+
+        petalo.style.left =
+            Math.random()*100+"vw";
+
+        petalo.style.animationDuration =
+            (4+Math.random()*5)+"s";
+
+        petalo.style.fontSize =
+            (15+Math.random()*20)+"px";
+
+        document.body.appendChild(petalo);
+
+
+        setTimeout(function(){
+
+            petalo.remove();
+
+        },9000);
+
+    },700);
+
+}
+
+
+/* CORAZONES */
+
+let corazones=[
+    "❤️",
+    "💗",
+    "💕",
+    "💖"
+];
+
+
+setInterval(function(){
+
+    let corazon =
+        document.createElement("div");
+
+    corazon.className="corazon";
+
+    corazon.innerHTML =
+        corazones[
+            Math.floor(
+                Math.random()*corazones.length
+            )
+        ];
+
+    corazon.style.left =
+        Math.random()*100+"vw";
+
+    corazon.style.animationDuration =
+        (5+Math.random()*4)+"s";
+
+    document.body.appendChild(corazon);
+
+
+    setTimeout(function(){
+
+        corazon.remove();
+
+    },9000);
+
+},1000);
+
+
+</script>
+
+</body>
+</html>
+```
