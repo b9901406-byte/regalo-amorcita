@@ -754,20 +754,6 @@ body{
         margin-top: 35px;
     }
 }
-
-.mensajeFoto{
-    margin:12px auto 0;
-    padding:10px 16px;
-    max-width:90%;
-    color:#681b3c;
-    background:#fffafc;
-    border-radius:14px;
-    font-size:16px;
-    line-height:1.4;
-    text-align:center;
-    box-shadow:0 4px 15px #00000022;
-}
-
 </style>
 
 </head>
@@ -940,22 +926,22 @@ body{
 
         <div class="fotos">
 
-            <div class="foto-card" onclick="abrirFoto('foto1.jpg', '❤️ Un recuerdo que siempre quiero guardar contigo.')">
+            <div class="foto-card" onclick="abrirFoto('foto1.jpg')">
                 <img src="foto1.jpg" alt="Un recuerdo especial">
                 <p>❤️ Un pequeño recuerdo de nosotros</p>
             </div>
 
-            <div class="foto-card" onclick="abrirFoto('foto2.jpg', '🌷 Mi Amorcita, un recuerdo muy especial para mí.')">
+            <div class="foto-card" onclick="abrirFoto('foto2.jpg')">
                 <img src="foto2.jpg" alt="Mi Amorcita">
                 <p>🌷 Mi Amorcita</p>
             </div>
 
-            <div class="foto-card" onclick="abrirFoto('foto3.jpg', '💕 Cada momento contigo se convierte en un recuerdo bonito.')">
+            <div class="foto-card" onclick="abrirFoto('foto3.jpg')">
                 <img src="foto3.jpg" alt="Otro recuerdo especial">
                 <p>💕 Un recuerdo que guardo con cariño</p>
             </div>
 
-            <div class="foto-card" onclick="abrirFoto('foto4.jpg', '🥰 Aunque estemos lejos, este recuerdo siempre estará conmigo.')">
+            <div class="foto-card" onclick="abrirFoto('foto4.jpg')">
                 <img src="foto4.jpg" alt="Otro recuerdo de nosotros">
                 <p>🥰 Un momento muy especial</p>
             </div>
@@ -1046,7 +1032,6 @@ body{
 <div class="visor" id="visor" onclick="cerrarFoto(event)">
     <button type="button" class="cerrarVisor" onclick="cerrarFoto(event)">×</button>
     <img id="fotoGrande" src="" alt="Foto ampliada">
-    <p id="mensajeFoto" class="mensajeFoto"></p>
 </div>
 
 <script>
@@ -1073,13 +1058,11 @@ function cerrarRecuerdos(){
 
 /* VISOR DE FOTOS */
 
-function abrirFoto(foto, mensaje){
+function abrirFoto(foto){
     let visor = document.getElementById("visor");
     let fotoGrande = document.getElementById("fotoGrande");
-    let mensajeFoto = document.getElementById("mensajeFoto");
 
     fotoGrande.src = foto;
-    mensajeFoto.textContent = mensaje;
     visor.classList.add("abierto");
 }
 
