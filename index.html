@@ -88,6 +88,7 @@ body{
     padding-top:20px;
 
     animation:aparecer 2s;
+    padding-bottom:30px;
 }
 
 .titulo{
@@ -340,6 +341,11 @@ body{
 .botonCarta{
     margin-top:-15px;
 }
+.botonRecuerdos{
+    margin-top:15px;
+    background:linear-gradient(45deg,#a81750,#e84d88);
+}
+
 
 
 /* CARTA */
@@ -493,6 +499,200 @@ body{
 }
 
 
+
+/* =========================
+   ÁLBUM DE RECUERDOS
+========================= */
+
+.album{
+    position:fixed;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) scale(0);
+    width:min(92%,700px);
+    max-height:85vh;
+    overflow:auto;
+    margin:0;
+    padding:25px 18px 35px;
+    background:#fffafc;
+    border-radius:22px;
+    box-shadow:0 20px 60px #681b3c66;
+    z-index:40;
+    display:block;
+    opacity:0;
+    visibility:hidden;
+    transition:.5s;
+}
+
+.album.abierto{
+    transform:translate(-50%,-50%) scale(1);
+    opacity:1;
+    visibility:visible;
+}
+
+.cerrarAlbum{
+    position:absolute;
+    top:12px;
+    right:15px;
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:50%;
+    background:#d92b69;
+    color:white;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.album h2{
+    color:#b51f5b;
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.album-intro{
+    font-size:17px;
+    margin-bottom:22px;
+    line-height:1.5;
+}
+
+.fotos{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.foto-card{
+    width:min(300px,42vw);
+    background:#fffafc;
+    padding:10px 10px 15px;
+    border-radius:18px;
+    box-shadow:0 10px 30px #681b3c33;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.foto-card:hover{
+    transform:translateY(-6px) rotate(-1deg);
+}
+
+.foto-card:nth-child(2):hover{
+    transform:translateY(-6px) rotate(1deg);
+}
+
+.foto-card img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    border-radius:13px;
+    display:block;
+}
+
+.foto-card p{
+    margin-top:12px;
+    font-size:17px;
+    color:#8c2853;
+}
+
+.final{
+    width:min(92%,650px);
+    margin:25px auto 60px;
+    padding:25px 20px;
+    background:#ffffffaa;
+    border:1px solid #ffffffcc;
+    border-radius:22px;
+    box-shadow:0 10px 30px #681b3c22;
+}
+
+.final h2{
+    color:#c2185b;
+    margin-bottom:12px;
+}
+
+.final p{
+    line-height:1.7;
+    font-size:17px;
+}
+
+/* VISOR DE FOTOS */
+
+.visor{
+    position:fixed;
+    inset:0;
+    background:#000b;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:50;
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+}
+
+.visor.abierto{
+    opacity:1;
+    visibility:visible;
+}
+
+.visor img{
+    max-width:92vw;
+    max-height:82vh;
+    object-fit:contain;
+    border-radius:15px;
+    box-shadow:0 15px 50px #0008;
+}
+
+.cerrarVisor{
+    position:absolute;
+    top:20px;
+    right:20px;
+    border:none;
+    border-radius:50%;
+    width:45px;
+    height:45px;
+    background:#fff;
+    color:#b51f5b;
+    font-size:22px;
+    cursor:pointer;
+}
+
+@media(max-width:600px){
+    .album{
+        width:92%;
+        max-height:85vh;
+        margin:0;
+        padding:25px 12px 25px;
+    }
+
+    .album h2{
+        font-size:25px;
+    }
+
+    .fotos{
+        gap:15px;
+    }
+
+    .foto-card{
+        width:44vw;
+        min-width:140px;
+        padding:7px 7px 12px;
+    }
+
+    .foto-card img{
+        height:230px;
+    }
+
+    .foto-card p{
+        font-size:14px;
+    }
+
+    .final{
+        margin-bottom:40px;
+    }
+}
+
 /* CELULAR */
 
 @media(max-width:500px){
@@ -606,7 +806,6 @@ body{
         Feliz 21 de septiembre, mi vida ❤️
     </p>
 
-
     <!-- RAMO -->
 
     <div class="ramo">
@@ -673,8 +872,6 @@ body{
             <div class="petalo"></div>
             <div class="centro"></div>
         </div>
-
-
         <!-- Flor 5 -->
         <div class="flor flor5">
             <div class="petalo"></div>
@@ -685,8 +882,6 @@ body{
             <div class="petalo"></div>
             <div class="centro"></div>
         </div>
-
-
         <!-- Flor 6 -->
         <div class="flor flor6">
             <div class="petalo"></div>
@@ -697,216 +892,202 @@ body{
             <div class="petalo"></div>
             <div class="centro"></div>
         </div>
-
-
         <div class="envoltorio"></div>
-
         <div class="cinta"></div>
-
     </div>
-
-
-    <button class="boton botonCarta" onclick="carta()">
-        💌 Esta carta para ti 
+    <button type="button" class="boton botonCarta" onclick="carta()">
+        💌 Esta carta para ti
+    </button>
+    <button type="button" class="boton botonRecuerdos" onclick="verRecuerdos()">
+        📸 Ver recuerdos
     </button>
 
+    <section class="album" id="album">
+
+        <button type="button" class="cerrarAlbum" onclick="cerrarRecuerdos()">×</button>
+
+        <h2>📸 Nuestros recuerdos ❤️</h2>
+
+        <p class="album-intro">
+            Aunque estemos lejos, cada recuerdo hace que la distancia
+            se sienta un poquito más pequeña. 💕
+        </p>
+        <div class="fotos">
+            <div class="foto-card" onclick="abrirFoto('foto1.jpg')">
+                <img src="foto1.jpg" alt="Un recuerdo especial">
+                <p>❤️ Un pequeño recuerdo de nosotros</p>
+            </div>
+            <div class="foto-card" onclick="abrirFoto('foto2.jpg')">
+                <img src="foto2.jpg" alt="Mi Amorcita">
+                <p>🌷 Mi Amorcita</p>
+            </div>
+            <div class="foto-card" onclick="abrirFoto('foto3.jpg')">
+                <img src="foto3.jpg" alt="Otro recuerdo especial">
+                <p>🥰 Un momento muy especial</p>
+            </div>
+            <div class="foto-card" onclick="abrirFoto('foto4.jpg')">
+                <img src="foto4.jpg" alt="Otro recuerdo de nosotros">
+                <p>💕 Un recuerdo que guardo con cariño</p>
+            </div>
+        </div>
+        <div class="final">
+            <h2>❤️ Para siempre, mi Amorcita</h2>
+            <p>
+                Tal vez la distancia nos quite algunos abrazos y momentos juntos,
+                pero nunca podrá quitarme las ganas de seguir compartiendo mi vida
+                contigo.
+            </p>
+            <p style="margin-top:15px;">
+                Espero que este pequeño álbum te recuerde lo mucho que te quiero.
+                Algún día podremos mirar todas estas fotos estando uno al lado del otro. ❤️
+            </p>
+            <p style="margin-top:15px;">
+                <strong>Te amo mi prccesa hermosa. 🌹</strong>
+            </p>
+        </div>
+    </section>
 </div>
-
-
 <!-- =========================
      CARTA
 ========================= -->
-
 <div class="carta" id="carta">
-
     <h2>
         Para mi Amorcita ❤️
     </h2>
-
     <p>
         Mi amor...
     </p>
-
     <p>
         Hoy quise hacerte algo diferente.
         Estas flores son eternas porque quería
         regalarte algo que no se marchite.
     </p>
-
     <p>
         Aunque ninguna flor puede compararse
         con lo bonita y especial que eres para mí,
         hice este pequeño ramo pensando
         solamente en ti. 🌹
     </p>
-
     <p>
         Gracias por estar en mi vida,
         por cada momento que hemos compartido
         y por todas las sonrisas que me has regalado.
     </p>
-
     <p>
         Espero que cuando veas este pequeño detalle
         recuerdes que hay alguien que te quiere
         muchísimo.
     </p>
-
     <p>
         ❤️ <strong>Te amo, mi Amorcita.</strong> ❤️
     </p>
-
     <p>
         Feliz 21 de septiembre mi vida. 🌷
     </p>
-
     <button class="cerrar" onclick="cerrarCarta()">
         Cerrar ❤️
     </button>
-
 </div>
-
-
 <script>
-
-
+/* ABRIR ÁLBUM DE RECUERDOS */
+function verRecuerdos(){
+    document.getElementById("album").classList.add("abierto");
+}
+/* CERRAR ÁLBUM DE RECUERDOS */
+function cerrarRecuerdos(){
+    document.getElementById("album").classList.remove("abierto");
+}
+/* VISOR DE FOTOS */
+function abrirFoto(foto){
+    let visor = document.getElementById("visor");
+    let fotoGrande = document.getElementById("fotoGrande");
+    fotoGrande.src = foto;
+    visor.classList.add("abierto");
+}
+function cerrarFoto(event){
+    if(event){
+        event.stopPropagation();
+    }
+    document.getElementById("visor").classList.remove("abierto");
+}
 /* ABRIR REGALO */
-
 function abrir(){
-
     let musica =
         document.getElementById("musica");
-
     /*
        El navegador permite iniciar
        la música porque esto ocurre
        después de tocar el botón.
     */
-
     musica.play().catch(function(){
         console.log("No se pudo reproducir automáticamente.");
     });
-
-
     document.getElementById("inicio")
         .style.opacity="0";
-
-
     setTimeout(function(){
-
         document.getElementById("inicio")
             .style.display="none";
-
         document.getElementById("contenido")
             .style.display="block";
-
+        document.body.style.overflowY="auto";
         crearPetalos();
-
     },1200);
-
 }
-
-
 /* ABRIR CARTA */
-
 function carta(){
-
     document.getElementById("carta")
         .classList.add("abierta");
-
 }
-
-
 /* CERRAR CARTA */
-
 function cerrarCarta(){
-
     document.getElementById("carta")
         .classList.remove("abierta");
-
 }
-
-
 /* PÉTALOS CAYENDO */
-
 function crearPetalos(){
-
     setInterval(function(){
-
         let petalo =
             document.createElement("div");
-
         petalo.className="petaloCaido";
-
         petalo.innerHTML="🌸";
-
         petalo.style.left =
             Math.random()*100+"vw";
-
         petalo.style.animationDuration =
             (4+Math.random()*5)+"s";
-
         petalo.style.fontSize =
             (15+Math.random()*20)+"px";
-
         document.body.appendChild(petalo);
-
-
         setTimeout(function(){
-
             petalo.remove();
-
         },9000);
-
     },700);
-
 }
-
-
 /* CORAZONES */
-
 let corazones=[
     "❤️",
     "💗",
     "💕",
     "💖"
 ];
-
-
 setInterval(function(){
-
     let corazon =
         document.createElement("div");
-
     corazon.className="corazon";
-
     corazon.innerHTML =
         corazones[
             Math.floor(
                 Math.random()*corazones.length
             )
         ];
-
     corazon.style.left =
         Math.random()*100+"vw";
-
     corazon.style.animationDuration =
         (5+Math.random()*4)+"s";
-
     document.body.appendChild(corazon);
-
-
     setTimeout(function(){
-
         corazon.remove();
-
     },9000);
-
 },1000);
-
-
 </script>
-
 </body>
 </html>
-
